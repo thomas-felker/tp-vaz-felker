@@ -50,10 +50,6 @@ export class FormulaireComponent {
     this.submitEvent$ = new EventEmitter();
     this.cancelEvent$ = new EventEmitter();
     this.form = FormulaireComponent.buildForm();
-  }
-
-  ngOnInit() {
-    debugger;
     this.form.patchValue({
       id: this.musicModel?.id,
       title: this.musicModel?.title,
