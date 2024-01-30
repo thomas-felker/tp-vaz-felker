@@ -8,7 +8,8 @@ import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
 import {FormControl, FormGroup, FormsModule} from "@angular/forms";
 import {MusiqueService} from "../../services/musique/musique.service";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {CarteComponent} from "../carte/carte.component";
 
 @Component({
   selector: 'app-accueil',
@@ -23,7 +24,9 @@ import {NgIf} from "@angular/common";
     MatButton,
     MatSuffix,
     NgIf,
-    FormsModule
+    FormsModule,
+    NgForOf,
+    CarteComponent
   ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
