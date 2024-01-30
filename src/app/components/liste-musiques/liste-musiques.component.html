@@ -1,6 +1,6 @@
 <section [ngSwitch]="view">
 <section *ngSwitchCase="'card'">
-  <carte *ngFor="let music of musics" [music]="music"></carte>
+  <carte *ngFor="let music of musics" [music]="music" (musicDelete)="delete($event)" (musicUpdate)="update($event)"></carte>
 </section>
 <section *ngSwitchCase="'tableau'">
   <tableau [datasource]="musics"></tableau>
