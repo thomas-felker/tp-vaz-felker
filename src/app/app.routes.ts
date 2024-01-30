@@ -4,7 +4,7 @@ import {ListeMusiquesComponent} from "./components/liste-musiques/liste-musiques
 import {AleatoireMusiqueComponent} from "./components/aleatoire-musique/aleatoire-musique.component";
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'accueil', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path:'home', component: AccueilComponent },
   { path:'random', component: AleatoireMusiqueComponent },
   { path:'list', component: ListeMusiquesComponent }

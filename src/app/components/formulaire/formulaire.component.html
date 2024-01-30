@@ -3,19 +3,20 @@
 
   <mat-card-content>
     <form novalidate [formGroup]="form">
-
       <p [class.errors]="form.get('titre')!.invalid && (form.get('titre')!.dirty || form.get('titre')!.touched)">
-        <mat-form-field class="titre">
-          <mat-label>Titre</mat-label>
+
+        <mat-form-field>
+          <label>Titre</label>
           <input formControlName="titre" name="titre" matInput placeholder="Ex: Raelsan" required/>
           <mat-error *ngIf="form.get('titre')!.dirty && form.get('titre')!.errors?.['required']">
               <br />Le titre est obligatoire</mat-error>
           <mat-error *ngIf="form.get('titre')!.dirty && form.get('titre')!.errors?.['minlength']">
               <br />Le titre doit avoir au moins 2 caractères </mat-error>
         </mat-form-field>
-        <mat-form-field class="name" >
-          <mat-label>Album</mat-label>
-          <input formControlName="Album" matInput  name="Album" required/>
+
+        <mat-form-field >
+          <label>Album</label>
+          <input formControlName="Album" matInput  placeholder="Le Chant des Sirènes" name="Album" required/>
           <mat-error *ngIf="form.get('Album' +'')!.dirty && form.get('Album' +
             '')!.errors?.['required']">
             <br />Le nom de l'Album est obligatoire</mat-error>
@@ -24,36 +25,75 @@
             '')!.errors?.['minlength']">
             <br />Le nom de l'Album doit avoir au moins 2 caractères </mat-error>
         </mat-form-field>
+
+        <mat-form-field >
+          <label>Artiste</label>
+          <input formControlName="Artiste" matInput  placeholder="Orelsan" name="Artiste" required/>
+          <mat-error *ngIf="form.get('Artiste' +'')!.dirty && form.get('Artiste' +
+            '')!.errors?.['required']">
+            <br />Le nom de l'Artiste est obligatoire</mat-error>
+          <mat-error *ngIf="form.get('Artiste' +
+           '')!.dirty && form.get('Artiste' +
+            '')!.errors?.['minlength']">
+            <br />Le nom de l'Artiste doit avoir au moins 2 caractères </mat-error>
+        </mat-form-field>
+
+        <mat-form-field >
+          <label>Année</label>
+          <input formControlName="Annee" matInput  placeholder="2011" name="Annee" required/>
+          <mat-error *ngIf="form.get('Annee' +'')!.dirty && form.get('Annee' +
+            '')!.errors?.['required']">
+            <br />L'année est obligatoire</mat-error>
+          <mat-error *ngIf="form.get('Annee' +
+           '')!.dirty && form.get('Annee' +
+            '')!.errors?.['minlength']">
+            <br />L'année doit avoir au moins 2 caractères </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Description</label>
+          <textarea formControlName="Description" matInput  placeholder="Ex: Raelsan est le premier single de l'album Le Chant des sirènes d'Orelsan." name="Description" required></textarea>
+          <mat-error *ngIf="form.get('Description' +'')!.dirty && form.get('Description' +
+            '')!.errors?.['required']">
+            <br />La description est obligatoire</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Temps</label>
+          <input formControlName="Temps" matInput  placeholder="Ex: 3:56" name="Temps" required/>
+          <mat-error *ngIf="form.get('Temps' +'')!.dirty && form.get('Temps' +
+            '')!.errors?.['required']">
+            <br />Le temps est obligatoire</mat-error>
+        </mat-form-field>
       </p>
 
       <p>
         <mat-form-field class="chip-list" >
           <mat-label> Styles :</mat-label>
-          <mat-chip-list #chipList aria-label="Styles de la musique">
-            <mat-chip *ngFor="let titre of musicModel.style" (removed)="removeChipset(titre)" >
+          <mat-chip-listbox #chipList aria-label="Styles de la musique">
+            <mat-chip *ngFor="let titre of musicModel?.style" (removed)="removeChipset(titre)" >
               {{titre}}
               <button matChipRemove>
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip>
-            <input placeholder="Ex: Rock..."
-                   [matChipInputFor]="chipList"
-                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                   (matChipInputTokenEnd)="addChipset($event)">
-          </mat-chip-list>
+          </mat-chip-listbox>
         </mat-form-field>
       </p>
 
-      <input #fileInput type="file" (change)="onFileSelected($event)"  name="photo" style="display: none;" accept=".png,.jpg" />
-      <div *ngIf="musicModel.picture" >
-        <img width="100" src="{{musicModel.picture}}" alt="Photo de l'album" /> <br>
-        <button mat-flat-button color="warn" (click)="musicModel.picture = null;">
+      <label>Image/Cover de l'album</label>
+      <br/>
+      <input #fileInput type="file" (change)="onFileSelected($event)"  name="photo" accept=".png,.jpg" />
+      <div *ngIf="musicModel?.picture" >
+        <img height="100" width="100" ngSrc="{{musicModel?.picture}}" alt="Photo de l'album" /> <br>
+        <button mat-flat-button color="warn">
           <mat-icon>
             cancel
           </mat-icon>
         </button>
       </div>
-      <div class="file-upload" *ngIf="!musicModel.picture">
+
+      <div class="file-upload" *ngIf="!musicModel?.picture">
         <button type="button" (click)="fileInput.click()" mat-fab>
           <mat-icon>
             image

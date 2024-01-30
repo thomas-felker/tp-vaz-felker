@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MusiqueService} from "../../services/musique/musique.service";
 import {Music} from "../../model/music";
 import {NgFor, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
@@ -25,6 +25,8 @@ import {PopUpComponent} from "../../pop-up/pop-up.component";
 })
 export class ListeMusiquesComponent {
   private addDialog: MatDialogRef<PopUpComponent> | any;
+  @Input()
+  musicsInput: Music[] | undefined;
   musics: Array<Music> = [];
   dialogStatus: string = "inactive";
   view = 'card';
@@ -34,9 +36,14 @@ export class ListeMusiquesComponent {
   }
 
   ngOnInit(): void {
-    this.musicService.fetchAll().subscribe((musics: Array<Music>) => {
-      this.musics = musics;
-    });
+    if (this.musicsInput == undefined) {
+      this.musicService.fetchAll().subscribe((musics: Array<Music>) => {
+        this.musics = musics;
+      });
+    }
+    else {
+      this.musics = this.musicsInput;
+    }
   }
 
   showDialog() {

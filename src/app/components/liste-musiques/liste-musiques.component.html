@@ -8,11 +8,9 @@
 
 
 <section class="buttons-fab" *ngIf="dialogStatus == 'inactive'">
-  <!--
   <button (click)="showDialog()" mat-fab color="accent" class="button-add">
     <em class="material-icons">add</em>
   </button>
--->
   <button (click)="switchView()" mat-fab color="warn">
     <em class="material-icons" *ngIf="view === 'card'">list</em>
     <em class="material-icons" *ngIf="view === 'tableau'">view_stream</em>

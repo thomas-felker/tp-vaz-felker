@@ -1,9 +1,14 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatCard} from "@angular/material/card";
 import {ListeMusiquesComponent} from "../liste-musiques/liste-musiques.component";
-import {TableauComponent} from "../tableau/tableau.component";
-import {MatFormField} from "@angular/material/form-field";
+import {MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
+import {Music} from "../../model/music";
+import {MatIcon} from "@angular/material/icon";
+import {MatButton} from "@angular/material/button";
+import {FormControl, FormGroup, FormsModule} from "@angular/forms";
+import {MusiqueService} from "../../services/musique/musique.service";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-accueil',
@@ -12,17 +17,38 @@ import {MatInput} from "@angular/material/input";
     MatCard,
     ListeMusiquesComponent,
     MatFormField,
-    MatInput
+    MatInput,
+    MatLabel,
+    MatIcon,
+    MatButton,
+    MatSuffix,
+    NgIf,
+    FormsModule
   ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
 })
 export class AccueilComponent {
-  @ViewChild("nom") nom: ElementRef<HTMLElement> | undefined;
-  @ViewChild("prenom") prenom: ElementRef<HTMLElement> | undefined;
+  form: FormGroup;
 
-  ngAfterViewInit(): void {
-    this.nom!.nativeElement!.innerHTML = "TEST";
-    this.prenom!.nativeElement!.innerHTML = "Thomas";
+  recherche: string = "";
+
+  inputContent: string = "";
+  musics: Music[] | undefined;
+
+  constructor(private readonly service: MusiqueService) {
+    this.form = AccueilComponent.buildForm();
+  }
+
+  search() {
+    this.service.searchByTitle(this.recherche).subscribe((result:Music[]) => {
+      this.musics = result;
+    })
+  }
+
+  private static buildForm(): FormGroup {
+    return new FormGroup({
+      searchBar: new FormControl('')
+    });
   }
 }

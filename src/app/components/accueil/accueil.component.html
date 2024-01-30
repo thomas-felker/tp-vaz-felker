@@ -2,8 +2,19 @@
   <form>
     <mat-form-field>
       <mat-label>Rechercher une musique</mat-label>
-      <input matInput placeholder="Ex. Pizza">
+      <!-- input vers lequel on va envoyer la recherche -->
+
+
+      <input [(ngModel)]="recherche" matInput placeholder="Ex. Pizza" name="searchBar" id="searchBar" >
+      <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
     </mat-form-field>
   </form>
+</section>
+
+<section *ngIf="musics != undefined">
+  <h2>TEST</h2>
+  <liste-musiques [musicsInput]="musics"></liste-musiques>
 </section>
 
