@@ -23,8 +23,8 @@ import {NgForOf} from "@angular/common";
     MatCardSubtitle,
     MatCardTitle,
     MatChip,
-    MatChipListbox,
-    NgForOf
+    NgForOf,
+    MatChipListbox
   ],
   templateUrl: './carte.component.html',
   styleUrl: './carte.component.css'

@@ -1,0 +1,58 @@
+.music-table {
+  width: 100%;
+}
+
+.mat-column-id {
+  width: 16px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-title {
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.mat-column-description {
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.mat-column-album {
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.mat-column-artist {
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.mat-column-duration{
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.mat-column-date {
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.mat-column-style {
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.mat-column-picture {
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: center;
+}

@@ -1,1 +1,70 @@
-<p>formulaire works!</p>
+<mat-card class="mat-whiteframe-2dp">
+  <mat-card-title> <span>➕ Ajouter une musique</span> </mat-card-title>
+
+  <mat-card-content>
+    <form novalidate [formGroup]="form">
+
+      <p [class.errors]="form.get('titre')!.invalid && (form.get('titre')!.dirty || form.get('titre')!.touched)">
+        <mat-form-field class="titre">
+          <mat-label>Titre</mat-label>
+          <input formControlName="titre" name="titre" matInput placeholder="Ex: Raelsan" required/>
+          <mat-error *ngIf="form.get('titre')!.dirty && form.get('titre')!.errors?.['required']">
+              <br />Le titre est obligatoire</mat-error>
+          <mat-error *ngIf="form.get('titre')!.dirty && form.get('titre')!.errors?.['minlength']">
+              <br />Le titre doit avoir au moins 2 caractères </mat-error>
+        </mat-form-field>
+        <mat-form-field class="name" >
+          <mat-label>Album</mat-label>
+          <input formControlName="Album" matInput  name="Album" required/>
+          <mat-error *ngIf="form.get('Album' +'')!.dirty && form.get('Album' +
+            '')!.errors?.['required']">
+            <br />Le nom de l'Album est obligatoire</mat-error>
+          <mat-error *ngIf="form.get('Album' +
+           '')!.dirty && form.get('Album' +
+            '')!.errors?.['minlength']">
+            <br />Le nom de l'Album doit avoir au moins 2 caractères </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="chip-list" >
+          <mat-label> Styles :</mat-label>
+          <mat-chip-list #chipList aria-label="Styles de la musique">
+            <mat-chip *ngFor="let titre of musicModel.style" (removed)="removeChipset(titre)" >
+              {{titre}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input placeholder="Ex: Rock..."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   (matChipInputTokenEnd)="addChipset($event)">
+          </mat-chip-list>
+        </mat-form-field>
+      </p>
+
+      <input #fileInput type="file" (change)="onFileSelected($event)"  name="photo" style="display: none;" accept=".png,.jpg" />
+      <div *ngIf="musicModel.picture" >
+        <img width="100" src="{{musicModel.picture}}" alt="Photo de l'album" /> <br>
+        <button mat-flat-button color="warn" (click)="musicModel.picture = null;">
+          <mat-icon>
+            cancel
+          </mat-icon>
+        </button>
+      </div>
+      <div class="file-upload" *ngIf="!musicModel.picture">
+        <button type="button" (click)="fileInput.click()" mat-fab>
+          <mat-icon>
+            image
+          </mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Annuler</button>
+    <button mat-button type="submit" color="primary" (click)="submit(form.value)" [disabled]="!form.valid">Valider</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,50 +1,60 @@
-<mat-table [dataSource]="music" matSort>
-  <!-- Titre Column -->
-  <ng-container matColumnDef="titre">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-  </ng-container>
+<section *ngIf="datasource != undefined">
+  <table mat-table class="music-table" [dataSource]="datasource">
 
-  <!-- Artiste Column -->
-  <ng-container matColumnDef="artiste">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Artiste </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.artist}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef>id</th>
+      <td *matCellDef="let music">{{music.id}}</td>
+    </ng-container>
 
-  <!-- Description Column -->
-  <ng-container matColumnDef="description">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="title">
+      <th *matHeaderCellDef>Title</th>
+      <td *matCellDef="let music">{{music.title}}</td>
+    </ng-container>
 
-  <!-- Album Column -->
-  <ng-container matColumnDef="album">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Album </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.album}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="description">
+      <th *matHeaderCellDef>Description</th>
+      <td *matCellDef="let music">{{music.description}}</td>
+    </ng-container>
 
-  <!-- Année Column -->
-  <ng-container matColumnDef="annee">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Année </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.annee}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="album">
+      <th *matHeaderCellDef>Album</th>
+      <td *matCellDef="let music">{{music.album}}</td>
+    </ng-container>
 
-  <!-- Styles Column -->
-  <ng-container matColumnDef="styles">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Styles </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.styles}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="artist">
+      <th *matHeaderCellDef>Artiste</th>
+      <td *matCellDef="let music">{{music.artist}}</td>
+    </ng-container>
 
-  <!-- Durée Column -->
-  <ng-container matColumnDef="duree">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Durée </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.duree}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="duration">
+      <th *matHeaderCellDef>Duration</th>
+      <td *matCellDef="let music">{{music.duration}}</td>
+    </ng-container>
 
-  <!-- Pochette Column -->
-  <ng-container matColumnDef="pochette">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Pochette </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element
-      .pochette}} </mat-cell>
-  </ng-container>
-</mat-table>
+    <ng-container matColumnDef="date">
+      <th *matHeaderCellDef>Date</th>
+      <td *matCellDef="let music">{{music.date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="style">
+      <th *matHeaderCellDef>Style</th>
+      <td *matCellDef="let music">{{music.style}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="picture">
+      <th *matHeaderCellDef>Cover</th>
+      <td *matCellDef="let music"><img [src]="music.picture" alt="Cover"/></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of musics">
+  </mat-paginator>
+</section>
+
