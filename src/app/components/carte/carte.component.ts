@@ -10,6 +10,8 @@ import {
 import {MatChip, MatChipListbox} from "@angular/material/chips";
 import { Music } from "../../model/music"
 import {NgForOf} from "@angular/common";
+import {MatIcon} from "@angular/material/icon";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'carte',
@@ -24,7 +26,9 @@ import {NgForOf} from "@angular/common";
     MatCardTitle,
     MatChip,
     NgForOf,
-    MatChipListbox
+    MatChipListbox,
+    MatIcon,
+    MatButton
   ],
   templateUrl: './carte.component.html',
   styleUrl: './carte.component.css'
@@ -33,19 +37,21 @@ import {NgForOf} from "@angular/common";
 export class CarteComponent {
     @Input() music: Music | undefined;
 
-    // Supression, modififactions
-    @Output() cardEvent: EventEmitter<string>
+
+
+  @Output('musicDelete') delete$: EventEmitter<any> = new EventEmitter();
+
+  @Output('musicUpdate') update$: EventEmitter<any> = new EventEmitter();
 
     constructor() {
-      this.cardEvent = new EventEmitter<string>();
     }
 
     delete(){
-      this.cardEvent.emit("delete");
+      this.delete$.emit(this.music);
     }
 
     modify(){
-      this.cardEvent.emit("modify")
+      this.update$.emit(this.music);
     }
 
 }

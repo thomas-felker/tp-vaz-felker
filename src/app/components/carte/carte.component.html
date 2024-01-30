@@ -17,7 +17,13 @@
     </mat-chip-listbox>
   </mat-card-content>
   <mat-card-actions>
-    <button>Modifier</button>
-    <button>Supprimer</button>
+    <button mat-raised-button color="primary" (click)="modify()">
+      <mat-icon>edit</mat-icon>
+      <span>Modifier</span>
+    </button>
+    <button mat-raised-button color="warn" (click)="delete()">
+      <mat-icon>delete</mat-icon>
+      <span>Supprimer</span>
+    </button>
   </mat-card-actions>
 </mat-card>

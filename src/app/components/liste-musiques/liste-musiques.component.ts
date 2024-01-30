@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {MusiqueService} from "../../services/musique/musique.service";
 import {Music} from "../../model/music";
 import {NgFor, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
@@ -31,7 +31,7 @@ export class ListeMusiquesComponent {
   dialogStatus: string = "inactive";
   view = 'card';
 
-  constructor(private readonly musicService: MusiqueService, public dialog: MatDialog,
+  constructor(private readonly musicService: MusiqueService, public dialog: MatDialog,private cdr: ChangeDetectorRef
   ) {
   }
 
@@ -70,6 +70,25 @@ export class ListeMusiquesComponent {
         this.hideDialog();
       });
   }
+
+  delete(music: Music) {
+    this.musicService.delete(music.id!).subscribe(music => {
+      this.musics = music;
+      this.musicService.update(music);
+      this.cdr.markForCheck();
+    });
+  }
+
+  update(music: Music) {
+    this.musicService
+      .update(music)
+      .pipe(mergeMap(() => this.musicService.fetchAll()))
+      .subscribe(music => {
+        this.musics = music;
+        this.hideDialog();
+      });
+  }
+
 
   hideDialog() {
     this.dialogStatus = 'inactive';

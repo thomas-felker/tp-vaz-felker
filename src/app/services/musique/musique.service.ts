@@ -45,10 +45,10 @@ export class MusiqueService {
   }
 
   update(music: Music): Observable<Music> {
-    return this.httpClient.put<Music>(this.urlServer.Default.replace(':id', music.id), music);
+    return this.httpClient.put<Music>(this.urlServer.ById.replace(':id', music.id), music);
   }
 
   delete(id: string): Observable<any> {
-    return this.httpClient.delete(this.urlServer.Default.replace(':id', id));
+    return this.httpClient.delete(this.urlServer.ById.replace(':id', id));
   }
 }
