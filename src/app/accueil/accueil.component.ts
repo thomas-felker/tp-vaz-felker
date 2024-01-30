@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {MatCard} from "@angular/material/card";
 
 @Component({
   selector: 'app-accueil',
   standalone: true,
-  imports: [],
+  imports: [
+    MatCard
+  ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
 })
 export class AccueilComponent {
-  title = 'TP Angular';
+  @ViewChild("nom") nom: ElementRef<HTMLElement> | undefined;
+  @ViewChild("prenom") prenom: ElementRef<HTMLElement> | undefined;
+
+  ngAfterViewInit(): void {
+    this.nom!.nativeElement!.innerHTML = "FELKER";
+    this.prenom!.nativeElement!.innerHTML = "Thomas";
+  }
 }
