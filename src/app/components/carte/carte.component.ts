@@ -8,7 +8,7 @@ import {
     MatCardSubtitle, MatCardTitle
 } from "@angular/material/card";
 import {MatChip, MatChipListbox} from "@angular/material/chips";
-import { Music } from "../model/music"
+import { Music } from "../../model/music"
 
 @Component({
   selector: 'app-carte',
@@ -29,7 +29,7 @@ import { Music } from "../model/music"
 })
 
 export class CarteComponent {
-    @Input() musics: Music[] | undefined;
+    @Input() music: Music | undefined;
 
     // Supression, modififactions
     @Output() cardEvent: EventEmitter<string>
@@ -39,11 +39,11 @@ export class CarteComponent {
     }
 
     delete(){
-  
+      this.cardEvent.emit("delete");
     }
 
     modify(){
-
+      this.cardEvent.emit("modify")
     }
 
 }

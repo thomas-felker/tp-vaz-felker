@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Music} from "../model/music";
-import {MusiqueService} from "../services/musique/musique.service";
+import {Music} from "../../model/music";
+import {MusiqueService} from "../../services/musique/musique.service";
 
 @Component({
   selector: 'app-aleatoire-musique',

@@ -8,8 +8,8 @@ import {
   MatCardSubtitle, MatCardTitle
 } from "@angular/material/card";
 import {MatChip, MatChipListbox} from "@angular/material/chips";
-import {MusiqueService} from "../services/musique/musique.service";
-import {Music} from "../model/music";
+import {MusiqueService} from "../../services/musique/musique.service";
+import {Music} from "../../model/music";
 import {NgFor} from "@angular/common";
 
 @Component({

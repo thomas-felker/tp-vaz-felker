@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {MatCard} from "@angular/material/card";
-import {ListeMusiquesComponent} from "../../liste-musiques/liste-musiques.component";
+import {ListeMusiquesComponent} from "../liste-musiques/liste-musiques.component";
 
 @Component({
   selector: 'app-accueil',

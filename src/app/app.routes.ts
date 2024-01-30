@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import {AccueilComponent} from "./components/accueil/accueil.component";
 import {DefaultPageComponent} from "./components/default-page/default-page.component";
-import {ListeMusiquesComponent} from "./liste-musiques/liste-musiques.component";
+import {ListeMusiquesComponent} from "./components/liste-musiques/liste-musiques.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'liste', pathMatch: 'full' },
