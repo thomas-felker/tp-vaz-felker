@@ -9,21 +9,23 @@ import {
 } from "@angular/material/card";
 import {MatChip, MatChipListbox} from "@angular/material/chips";
 import { Music } from "../../model/music"
+import {NgForOf} from "@angular/common";
 
 @Component({
-  selector: 'app-carte',
+  selector: 'carte',
   standalone: true,
-    imports: [
-        MatCard,
-        MatCardActions,
-        MatCardContent,
-        MatCardHeader,
-        MatCardImage,
-        MatCardSubtitle,
-        MatCardTitle,
-        MatChip,
-        MatChipListbox
-    ],
+  imports: [
+    MatCard,
+    MatCardActions,
+    MatCardContent,
+    MatCardHeader,
+    MatCardImage,
+    MatCardSubtitle,
+    MatCardTitle,
+    MatChip,
+    MatChipListbox,
+    NgForOf
+  ],
   templateUrl: './carte.component.html',
   styleUrl: './carte.component.css'
 })

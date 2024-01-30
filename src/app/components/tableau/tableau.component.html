@@ -1,1 +1,50 @@
-<p>tableau works!</p>
+<mat-table [dataSource]="music" matSort>
+  <!-- Titre Column -->
+  <ng-container matColumnDef="titre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+  </ng-container>
+
+  <!-- Artiste Column -->
+  <ng-container matColumnDef="artiste">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Artiste </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.artist}} </mat-cell>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+  </ng-container>
+
+  <!-- Album Column -->
+  <ng-container matColumnDef="album">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Album </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.album}} </mat-cell>
+  </ng-container>
+
+  <!-- Année Column -->
+  <ng-container matColumnDef="annee">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Année </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.annee}} </mat-cell>
+  </ng-container>
+
+  <!-- Styles Column -->
+  <ng-container matColumnDef="styles">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Styles </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.styles}} </mat-cell>
+  </ng-container>
+
+  <!-- Durée Column -->
+  <ng-container matColumnDef="duree">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Durée </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.duree}} </mat-cell>
+  </ng-container>
+
+  <!-- Pochette Column -->
+  <ng-container matColumnDef="pochette">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Pochette </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element
+      .pochette}} </mat-cell>
+  </ng-container>
+</mat-table>

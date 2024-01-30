@@ -1,11 +1,15 @@
 <mat-drawer-container>
   <mat-drawer #drawer mode="side">
     <mat-nav-list>
-      <mat-list-item [routerLink]="['/']">
+      <mat-list-item [routerLink]="['/home']">
         <mat-icon>home</mat-icon>
         <span class="full-width">Accueil</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="['/default-page']">
+      <mat-list-item [routerLink]="['/random']">
+        <mat-icon>album</mat-icon>
+        <span class="full-width">Titre aléatoire</span>
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/list']">
         <mat-icon>library_music</mat-icon>
         <span class="full-width">Liste des titres</span>
       </mat-list-item>
