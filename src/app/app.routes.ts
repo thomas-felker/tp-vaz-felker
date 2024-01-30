@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import {AccueilComponent} from "./accueil/accueil.component";
-import {DefaultPageComponent} from "./default-page/default-page.component";
+import {AccueilComponent} from "./components/accueil/accueil.component";
+import {DefaultPageComponent} from "./components/default-page/default-page.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
